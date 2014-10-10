@@ -43,8 +43,10 @@ layer1.labels[0]  # Labels for each sample for Y_0
 # array([0, 0, 1, 1])
 layer1.labels[1]  # Labels for each sample for Y_1
 # array([0, 1, 0, 1])
-layer1.tcs  # TC(X;Y_j)
+layer1.tcs  # TC(X;Y_j) (all info measures reported in nats). 
 # array([ 1.385,  0.692])
+# TC(X_Gj) >=TC(X_Gj ; Y_j)
+# For this example, TC(X1,X2,X3)=1.386, TC(X4,X5) = 0.693
 ```
 
 ### Data format
