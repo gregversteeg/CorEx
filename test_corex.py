@@ -5,7 +5,6 @@ import numpy as np
 from functools import partial, update_wrapper
 
 verbose = False
-more_verbose = False
 seed = 3
 
 def generate_data(n_samples=100, group_sizes=[2], dim_hidden=2, missing=0):
@@ -44,7 +43,7 @@ def test_corex_all():
             np.random.seed(seed)
             X, Y_true, clusters, tcs = generate_data(n_samples=n_samples, group_sizes=group_sizes, dim_hidden=dim_hidden)
             methods = [
-                corex.Corex(n_hidden=len(group_sizes), dim_hidden=dim_hidden, missing_values=-1, seed=seed, verbose=verbose, more_verbose=more_verbose).fit(X)
+                corex.Corex(n_hidden=len(group_sizes), dim_hidden=dim_hidden, missing_values=-1, seed=seed, verbose=verbose).fit(X)
                 ]
             for i, method in enumerate(methods):
                 f = partial(check_correct, clusters, method.tcs, Y_true, X, method)
@@ -62,7 +61,7 @@ def test_missing_values():
     X, Y_true, clusters, tcs = generate_data(n_samples=n_samples, group_sizes=group_sizes,
                                                      dim_hidden=dim_hidden, missing=missing)
     methods = [
-        corex.Corex(n_hidden=len(group_sizes), dim_hidden=dim_hidden, missing_values=-1, seed=seed, verbose=verbose, more_verbose=more_verbose).fit(X)
+        corex.Corex(n_hidden=len(group_sizes), dim_hidden=dim_hidden, missing_values=-1, seed=seed, verbose=verbose).fit(X)
     ]
 
     for i, method in enumerate(methods):
@@ -73,9 +72,9 @@ def test_missing_values():
 
 def test_near_shannon_limit():
     X, Y_true, clusters, tcs = generate_noisy_data(n_samples=1000, group_sizes=[200], erasure_p=1.-3./200)
-    out = corex.Corex(n_hidden=1, seed=seed, verbose=verbose, more_verbose=more_verbose).fit(X)
+    out = corex.Corex(n_hidden=1, seed=seed, verbose=verbose).fit(X)
     assert max(np.mean(Y_true==out.labels.T), 1-np.mean(Y_true==out.labels.T)) > 0.95  # rate = 3*capacity, near perfect
 
     X, Y_true, clusters, tcs = generate_noisy_data(n_samples=1000, group_sizes=[200], erasure_p=1.-1./200)
-    out = corex.Corex(n_hidden=1, seed=seed, verbose=verbose, more_verbose=more_verbose).fit(X)
+    out = corex.Corex(n_hidden=1, seed=seed, verbose=verbose).fit(X)
     assert max(np.mean(Y_true==out.labels.T), 1-np.mean(Y_true==out.labels.T)) < 0.9  # rate=capacity, not perfect

@@ -1,16 +1,12 @@
 """Correlation Explanation
 
-A method to learn a hierarchy of successively more abstract
-representations of complex data that are maximally
-informative about the data. This method is unsupervised,
-requires no assumptions about the data-generating model,
-and scales linearly with the number of variables.
-
 Greg Ver Steeg and Aram Galstyan. "Discovering Structure in
 High-Dimensional Data Through Correlation Explanation."
 NIPS, 2014. arXiv preprint arXiv:1406.1222.
 
-Code below written by Greg Ver Steeg and Gabriel Pereyra
+Code below written by:
+Greg Ver Steeg (gregv@isi.edu)
+and Gabriel Pereyra
 
 License: GPL2
 """
@@ -22,28 +18,93 @@ class Corex(object):
     """
     Correlation Explanation
 
-    Going to try to follow sklearn naming/style (e.g. fit(X) to train)
+    A method to learn a hierarchy of successively more abstract
+    representations of complex data that are maximally
+    informative about the data. This method is unsupervised,
+    requires no assumptions about the data-generating model,
+    and scales linearly with the number of variables.
+
+    Greg Ver Steeg and Aram Galstyan. "Discovering Structure in
+    High-Dimensional Data Through Correlation Explanation."
+    NIPS, 2014. arXiv preprint arXiv:1406.1222.
+
+    Code follows sklearn naming/style (e.g. fit(X) to train)
+
+    Parameters
+    ----------
+    n_hidden : int, optional, default=2
+        Number of hidden units.
+
+    dim_hidden : int, optional, default=2
+        Each hidden unit can take dim_hidden discrete values.
+
+    alpha_hyper : tuple, optional
+        A tuple of three numbers representing hyper-parameters
+        of the algorithm. See NIPS paper for meaning.
+        Not extensively tested, but problem-specific tuning
+        does not seem necessary.
+
+    max_iter : int, optional
+        Maximum number of iterations before ending.
+
+    batch_size : int, optional
+        Number of examples per minibatch. NOT IMPLEMENTED IN THIS VERSION.
+
+    n_repeat : int, optional
+        Repeat several times and take solution with highest TC.
+        NOT IMPLEMENTED IN THIS VERSION. (But a good thing to do.)
+
+    verbose : int, optional
+        The verbosity level. The default, zero, means silent mode. 1 outputs TC(X;Y) as you go
+        2 output alpha matrix and MIs as you go.
+
+    seed : integer or numpy.RandomState, optional
+        A random number generator instance to define the state of the
+        random permutations generator. If an integer is given, it fixes the
+        seed. Defaults to the global numpy random number generator.
 
     Attributes
     ----------
+    labels : array, [n_hidden, n_samples]
+        Label for each hidden unit for each sample.
 
-    n_hidden : int, default=2
-        The number of hidden factors.
-
-    dim_hidden : int, default=2
-        The dimension of the hidden factors.
+    clusters : array, [n_variables]
+        Cluster label for each input variable.
 
     p_y_given_x : array, [n_hidden, n_samples, dim_hidden]
         The distribution of latent factors for each sample.
 
-    TODO: Add. Do I put every single output here as well?
+    alpha : array-like, shape (n_components,)
+        Adjacency matrix between input variables and hidden units. In range [0,1].
+
+    mis : array, [n_hidden, n_variables]
+        Mutual information between each variable and hidden unit
+
+    tcs : array, [n_hidden]
+        TC(X_Gj;Y_j) for each hidden unit
+
+    tc : float
+        Convenience variable = Sum_j tcs[j]
+
+    tc_history : array
+        Shows value of TC over the course of learning. Hopefully, it is converging.
+
+
+
+
+    References
+    ----------
+
+    [1]     Greg Ver Steeg and Aram Galstyan. "Discovering Structure in
+            High-Dimensional Data Through Correlation Explanation."
+            NIPS, 2014. arXiv preprint arXiv:1406.1222.
 
 
     """
     def __init__(self, n_hidden=2, dim_hidden=2,            # Size of representations
                  batch_size=1e6, max_iter=400, n_repeat=1,  # Computational limits
                  eps=1e-6, alpha_hyper=(0.3, 1., 500.), balance=0.,     # Parameters
-                 missing_values=-1, seed=None, verbose=False, more_verbose=False):
+                 missing_values=-1, seed=None, verbose=False):
 
         self.dim_hidden = dim_hidden  # Each hidden factor can take dim_hidden discrete values
         self.n_hidden = n_hidden  # Number of hidden factors to use (Y_1,...Y_m) in paper
@@ -59,11 +120,10 @@ class Corex(object):
 
         np.random.seed(seed)  # Set for deterministic results
         self.verbose = verbose
-        self.more_verbose = more_verbose
-        if verbose:
+        if verbose > 0:
             np.set_printoptions(precision=3, suppress=True, linewidth=200)
             print 'corex, rep size:', n_hidden, dim_hidden
-        if more_verbose:
+        if verbose > 1:
             np.seterr(all='warn')
         else:
             np.seterr(all='ignore')
@@ -306,7 +366,7 @@ class Corex(object):
     def print_verbose(self):
         if self.verbose:
             print self.tcs
-        if self.more_verbose:
+        if self.verbose > 1:
             print self.alpha[:,:,0]
             if hasattr(self, "mis"):
                 print self.mis[:,:,0]
