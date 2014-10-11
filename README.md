@@ -5,7 +5,10 @@ are maximally informative about the data. This project consists of python code t
 
 A preliminary version of the technique is described in this paper.      
 *Discovering Structure in High-Dimensional Data Through Correlation Explanation*    
-NIPS 2014, http://arxiv.org/abs/1406.1222        
+Greg Ver Steeg and Aram Galstyan, NIPS 2014, http://arxiv.org/abs/1406.1222        
+
+The code here is written by Greg Ver Steeg and Gabriel Pereyra. 
+
 Additional theoretical developments are underway, some of which are already implemented here.
 
 ###Dependencies
