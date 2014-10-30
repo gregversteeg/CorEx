@@ -7,6 +7,10 @@ A preliminary version of the technique is described in this paper.
 *Discovering Structure in High-Dimensional Data Through Correlation Explanation*    
 Greg Ver Steeg and Aram Galstyan, NIPS 2014, http://arxiv.org/abs/1406.1222        
 
+Some theoretical developments are described here:      
+*Maximally Informative Hierarchical Representions of High-Dimensional Data*    
+Greg Ver Steeg and Aram Galstyan, http://arxiv.org/abs/1410.7404   
+
 The code here is written by Greg Ver Steeg and Gabriel Pereyra. 
 
 Additional theoretical developments are underway, some of which are already implemented here.
