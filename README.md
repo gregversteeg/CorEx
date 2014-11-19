@@ -13,7 +13,7 @@ Greg Ver Steeg and Aram Galstyan, http://arxiv.org/abs/1410.7404
 
 The code here is written by Greg Ver Steeg and Gabriel Pereyra. 
 
-Additional theoretical developments are underway, some of which are already implemented here.
+This code implements only the techniques of the first paper. Additional theoretical developments appear in the second paper and more are underway. New functionality will be added over time. 
 
 ###Dependencies
 
