@@ -5,8 +5,15 @@ are maximally informative about the data. This project consists of python code t
 
 A preliminary version of the technique is described in this paper.      
 *Discovering Structure in High-Dimensional Data Through Correlation Explanation*    
-NIPS 2014, http://arxiv.org/abs/1406.1222        
-Additional theoretical developments are underway, some of which are already implemented here.
+Greg Ver Steeg and Aram Galstyan, NIPS 2014, http://arxiv.org/abs/1406.1222        
+
+Some theoretical developments are described here:      
+*Maximally Informative Hierarchical Representions of High-Dimensional Data*    
+Greg Ver Steeg and Aram Galstyan, http://arxiv.org/abs/1410.7404   
+
+The code here is written by Greg Ver Steeg and Gabriel Pereyra. 
+
+This code implements only the techniques of the first paper. Additional theoretical developments appear in the second paper and more are underway. New functionality will be added over time. 
 
 ###Dependencies
 
