@@ -232,14 +232,14 @@ class Corex(object):
                 self.mis = self.calculate_mis(self.log_p_y, self.log_marg)
                 self.update_alpha(self.mis, self.tcs)  # Eq. 9
 
-            self.p_y_given_x, log_z = self.calculate_latent(X_event)  # Eq. 7
+            self.p_y_given_x, self.log_z = self.calculate_latent(X_event)  # Eq. 7
 
-            self.update_tc(log_z)  # Calculate TC and record history for convergence
+            self.update_tc(self.log_z)  # Calculate TC and record history for convergence
 
             self.print_verbose()
             if self.convergence(): break
 
-        self.sort_and_output(log_z)
+        self.sort_and_output()
 
         return self.labels
 
@@ -274,7 +274,7 @@ class Corex(object):
 
         log_p_y_given_x_unnorm = -np.log(self.dim_hidden) * (0.5 + np.random.random((self.n_hidden, self.n_samples, self.dim_hidden)))
         #log_p_y_given_x_unnorm = -100.*np.random.randint(0,2,(self.n_hidden, self.n_samples, self.dim_hidden))
-        self.p_y_given_x, log_z = self.normalize_latent(log_p_y_given_x_unnorm)
+        self.p_y_given_x, self.log_z = self.normalize_latent(log_p_y_given_x_unnorm)
 
     def data_statistics(self, X_event):
         p_x = np.sum(X_event, axis=1).astype(float)
@@ -352,14 +352,14 @@ class Corex(object):
         self.tcs = np.mean(log_z, axis=1).reshape(-1)
         self.tc_history.append(np.sum(self.tcs))
 
-    def sort_and_output(self, log_z):
+    def sort_and_output(self):
         order = np.argsort(self.tcs)[::-1]  # Order components from strongest TC to weakest
         self.tcs = self.tcs[order]  # TC for each component
         self.alpha = self.alpha[order]  # Connections between X_i and Y_j
         self.p_y_given_x = self.p_y_given_x[order]  # Probabilistic labels for each sample
         self.log_marg = self.log_marg[order]  # Parameters defining the representation
         self.log_p_y = self.log_p_y[order]  # Parameters defining the representation
-        self.log_z = log_z[order]  # -log_z can be interpreted as "surprise" for each sample
+        self.log_z = self.log_z[order]  # -log_z can be interpreted as "surprise" for each sample
         if hasattr(self, 'mis'):
             self.mis = self.mis[order]
 
