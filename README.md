@@ -13,7 +13,7 @@ Greg Ver Steeg and Aram Galstyan, AISTATS 2015, http://arxiv.org/abs/1410.7404
 
 The code here is written by Greg Ver Steeg and Gabriel Pereyra. 
 
-Current code implements only the techniques of the first paper. 
+Current version implements only the techniques of the first paper. 
 Additional theoretical developments appear in the second paper and more are underway. 
 New functionality will be added over time. 
 
