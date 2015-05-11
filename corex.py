@@ -372,6 +372,8 @@ class Corex(object):
                 print self.mis[:,:,0]
 
     def convergence(self):
+        if len(self.tc_history) < 10:
+            return False
         dist = -np.mean(self.tc_history[-10:-5]) + np.mean(self.tc_history[-5:])
         return np.abs(dist) < self.eps # Check for convergence. dist is nan for empty arrays, but that's OK
 
