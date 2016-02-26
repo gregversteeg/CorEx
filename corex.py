@@ -122,7 +122,7 @@ class Corex(object):
         self.verbose = verbose
         if verbose > 0:
             np.set_printoptions(precision=3, suppress=True, linewidth=200)
-            print 'corex, rep size:', n_hidden, dim_hidden
+            print('corex, rep size: {}, {}'.format(n_hidden, dim_hidden))
         if verbose > 1:
             np.seterr(all='warn')
         else:
@@ -261,7 +261,7 @@ class Corex(object):
         values_in_data = set(np.unique(X).tolist())-set([self.missing_values])
         self.dim_visible = int(max(values_in_data)) + 1
         if not set(range(self.dim_visible)) == values_in_data:
-            print "Warning: Data matrix values should be consecutive integers starting with 0,1,..."
+            print("Warning: Data matrix values should be consecutive integers starting with 0,1,...")
         self.n_events = self.n_visible * self.dim_visible
 
     def initialize_representation(self):
@@ -365,11 +365,11 @@ class Corex(object):
 
     def print_verbose(self):
         if self.verbose:
-            print self.tcs
+            print(self.tcs)
         if self.verbose > 1:
-            print self.alpha[:,:,0]
+            print(self.alpha[:,:,0])
             if hasattr(self, "mis"):
-                print self.mis[:,:,0]
+                print(self.mis[:,:,0])
 
     def convergence(self):
         if len(self.tc_history) < 10:
