@@ -3,6 +3,10 @@
 The principle of *Cor*-relation *Ex*-planation has recently been introduced as a way to build rich representations that
 are maximally informative about the data. This project consists of python code to build these representations.
 
+The version here implements only the technique of the 2014 NIPS paper. 
+The code used in recent work on gene expression and neuroscience applications incorporates several extensions (including continuous variables, Bayesian smoothing for under-sampled data, multiprocessor support, and missing data)
+I'm making that code more user-friendly and plan to release it by the end of the year. It is already usable, if you are eager to try it let me know and I'll send you the current version (or send your github username and I'll add you to the repo).
+
 A preliminary version of the technique is described in this paper.      
 *Discovering Structure in High-Dimensional Data Through Correlation Explanation*    
 Greg Ver Steeg and Aram Galstyan, NIPS 2014, http://arxiv.org/abs/1406.1222        
@@ -12,10 +16,6 @@ Some theoretical developments are described here:
 Greg Ver Steeg and Aram Galstyan, AISTATS 2015, http://arxiv.org/abs/1410.7404   
 
 The code here is written by Greg Ver Steeg and Gabriel Pereyra. 
-
-Current version implements only the techniques of the first paper. 
-Additional theoretical developments appear in the second paper and more are underway. 
-New functionality will be added over time. 
 
 ###Dependencies
 
