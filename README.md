@@ -4,8 +4,8 @@ The principle of *Cor*-relation *Ex*-planation has recently been introduced as a
 are maximally informative about the data. This project consists of python code to build these representations.
 
 The version here implements only the technique of the 2014 NIPS paper. 
-The code used in recent work on gene expression and neuroscience applications incorporates several extensions (including continuous variables, Bayesian smoothing for under-sampled data, multiprocessor support, and missing data)
-I'm making that code more user-friendly and plan to release it by the end of the year. It is already usable, if you are eager to try it let me know and I'll send you the current version (or send your github username and I'll add you to the repo).
+UPDATE: A version developed with collaborators in biomedical domains that incorporates features like continuous variables, missing values, and Bayesian smoothing is now available here: https://github.com/gregversteeg/bio_corex/. 
+
 
 A preliminary version of the technique is described in this paper.      
 *Discovering Structure in High-Dimensional Data Through Correlation Explanation*    
