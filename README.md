@@ -108,4 +108,4 @@ We are currently testing extensions that allow for arbitrary data types such as 
 ## Visualization
 
 See http://bit.ly/corexvis for examples of some of the rich visualization capabilities. 
-Eventually, these will be added here. 
+These types of visualizations are added in https://github.com/gregversteeg/bio_corex/. 
