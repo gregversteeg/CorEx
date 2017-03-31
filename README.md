@@ -104,6 +104,7 @@ should not matter in principle, it does have an effect in this version.)
 
 #### Future versions
 We are currently testing extensions that allow for arbitrary data types such as continuous variables. 
+Some of these capabilities were added to https://github.com/gregversteeg/bio_corex/. 
 
 ## Visualization
 
