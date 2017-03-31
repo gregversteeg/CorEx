@@ -4,6 +4,7 @@ The principle of *Cor*-relation *Ex*-planation has recently been introduced as a
 are maximally informative about the data. This project consists of python code to build these representations.
 
 The version here implements only the technique of the 2014 NIPS paper. 
+
 UPDATE: A version developed with collaborators in biomedical domains that incorporates features like continuous variables, missing values, and Bayesian smoothing is now available here: https://github.com/gregversteeg/bio_corex/. 
 
 
