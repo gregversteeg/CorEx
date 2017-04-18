@@ -1,4 +1,4 @@
-#Correlation Explanation (CorEx)
+# Correlation Explanation (CorEx)
 
 The principle of *Cor*-relation *Ex*-planation has recently been introduced as a way to build rich representations that
 are maximally informative about the data. This project consists of python code to build these representations.
@@ -18,12 +18,12 @@ Greg Ver Steeg and Aram Galstyan, AISTATS 2015, http://arxiv.org/abs/1410.7404
 
 The code here is written by Greg Ver Steeg and Gabriel Pereyra. 
 
-###Dependencies
+### Dependencies
 
 CorEx requires numpy and scipy. If you use OS X, I recommend installing the Scipy Superpack:             
 http://fonnesbeck.github.io/ScipySuperpack/
 
-###Install
+### Install
 
 To install, download using the link on the right or clone the project by executing this command in your target directory:
 ```
