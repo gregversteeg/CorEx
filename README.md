@@ -1,11 +1,9 @@
 # Correlation Explanation (CorEx)
 
 The principle of *Cor*-relation *Ex*-planation has recently been introduced as a way to build rich representations that
-are maximally informative about the data. This project consists of python code to build these representations.
+are informative about relationships in data. This project consists of python code to build these representations.
 
-The version here implements only the technique of the 2014 NIPS paper. 
-
-UPDATE: A version developed with collaborators in biomedical domains that incorporates features like continuous variables, missing values, and Bayesian smoothing is now available here: https://github.com/gregversteeg/bio_corex/. 
+The version here implements only the technique of the 2014 NIPS paper. A version that incorporates features like continuous variables, missing values, and Bayesian smoothing is now available here: https://github.com/gregversteeg/bio_corex/. It subsumes all functionality in this version. Despite the name, there's nothing specific to biology about it, but development was guided by problems in biomedical domains. 
 
 
 A preliminary version of the technique is described in this paper.      
